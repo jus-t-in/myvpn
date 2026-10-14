@@ -1,0 +1,9 @@
+# 含密钥/节点信息，绝不提交
+.secrets/
+# 第三方下载的审计副本与工具残留
+.audit/
+.playwright-mcp/
+# 本地 Claude Code 配置，含真实 IP / token，不入库
+.claude/
+# 截图
+*.png

@@ -1,0 +1,20 @@
+[Unit]
+Description=Hold resident memory to avoid Oracle Always Free idle reclamation
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/oci-keepalive/oci-keepalive.py
+Environment=KEEPALIVE_GIB=3
+Restart=always
+RestartSec=30
+Nice=19
+MemoryMax=4G
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+# 模板文件：由 server/deploy-sub.sh 替换 __DIR__ / __TOKEN__ / __PORT__ 后
+# 安装到服务器 /etc/systemd/system/myvpn-sub.service
+[Unit]
+Description=myVPN subscription file server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 __DIR__/myvpn-sub.py __TOKEN__ __DIR__/__TOKEN__/myvpn.yaml __PORT__
+Restart=on-failure
+RestartSec=3
+User=nobody
+Group=nogroup
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
